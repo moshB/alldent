@@ -1,6 +1,5 @@
-
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // ייבוא ניווט
 import Navbar from '../components/Navbar';
 import './HomePage.css';
 
@@ -14,15 +13,10 @@ const clinicsData = [
 function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredClinics, setFilteredClinics] = useState(clinicsData);
+  const navigate = useNavigate();
 
-  const handleSearch = (event) => {
-    const value = event.target.value.toLowerCase();
-    setSearchTerm(value);
-    setFilteredClinics(
-      clinicsData.filter((clinic) =>
-        clinic.name.toLowerCase().includes(value) || clinic.location.toLowerCase().includes(value)
-      )
-    );
+  const handleSearch = () => {
+    navigate('/search-results'); // מעבר לעמוד תוצאות החיפוש
   };
 
   return (
@@ -30,21 +24,25 @@ function HomePage() {
       <Navbar />
       <div className="hero-section">
         <h1>Find the Best Clinics Near You</h1>
-        <input
-          type="text"
-          placeholder="Search by clinic name or location..."
-          value={searchTerm}
-          onChange={handleSearch}
-          className="search-bar"
-        />
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search by clinic name or location..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-bar"
+          />
+          <button onClick={handleSearch} className="search-button">Search</button>
+        </div>
       </div>
+
       <div className="clinics-section">
         {filteredClinics.map((clinic) => (
           <div key={clinic.id} className="clinic-card">
             <img src={clinic.image} alt={clinic.name} className="clinic-image" />
             <div className="clinic-info">
               <h2>{clinic.name}</h2>
-              <p>{clinic.location}</p>
+              <p>Location: {clinic.location}</p>
               <p>Rating: {clinic.rating}</p>
             </div>
           </div>
@@ -55,5 +53,3 @@ function HomePage() {
 }
 
 export default HomePage;
-
-
