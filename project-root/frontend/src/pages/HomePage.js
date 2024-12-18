@@ -5,10 +5,10 @@ import Navbar from '../components/Navbar';
 import './HomePage.css';
 
 const clinicsData = [
-  { id: 1, name: "Healthy Smile Clinic", location: "Tel Aviv", rating: 4.5, image: "https://via.placeholder.com/200" },
-  { id: 2, name: "City Care Center", location: "Jerusalem", rating: 4.7, image: "https://via.placeholder.com/200" },
-  { id: 3, name: "Wellness Clinic", location: "Haifa", rating: 4.3, image: "https://via.placeholder.com/200" },
-  { id: 4, name: "Family Health Clinic", location: "Rishon Lezion", rating: 4.6, image: "https://via.placeholder.com/200" },
+  { id: 1, name: "Healthy Smile Clinic", location: "Birmingham", rating: 4.5, image: "https://via.placeholder.com/200" },
+  { id: 2, name: "City Care Center", location: "London", rating: 4.7, image: "https://via.placeholder.com/200" },
+  { id: 3, name: "Wellness Clinic", location: "Heywood", rating: 4.3, image: "https://via.placeholder.com/200" },
+  { id: 4, name: "Family Health Clinic", location: "Heywood", rating: 4.6, image: "https://via.placeholder.com/200" },
 ];
 
 function HomePage() {
