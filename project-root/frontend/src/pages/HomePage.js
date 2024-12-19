@@ -4,19 +4,27 @@ import Navbar from '../components/Navbar';
 import './HomePage.css';
 
 const clinicsData = [
-  { id: 1, name: "Healthy Smile Clinic", location: "Birmingham", rating: 4.5, image: "https://www.cityorthopeds.com/wp-content/uploads/2015/05/Young-girl-sitting-on-dental-chair-getting-her-teeth-checked-by-a-dentist.jpg" },
-  { id: 2, name: "City Care Center", location: "London", rating: 4.7, image: "https://www.cityorthopeds.com/wp-content/uploads/2015/05/Young-girl-sitting-on-dental-chair-getting-her-teeth-checked-by-a-dentist.jpg" },
-  { id: 3, name: "Wellness Clinic", location: "Heywood", rating: 4.3, image: "https://www.cityorthopeds.com/wp-content/uploads/2015/05/Young-girl-sitting-on-dental-chair-getting-her-teeth-checked-by-a-dentist.jpg" },
-  { id: 4, name: "Family Health Clinic", location: "Heywood", rating: 4.6, image: "https://www.cityorthopeds.com/wp-content/uploads/2015/05/Young-girl-sitting-on-dental-chair-getting-her-teeth-checked-by-a-dentist.jpg" },
+  { id: 1, name: "Healthy Smile Clinic", location: "Birmingham", rating: 4.5, image: "https://via.placeholder.com/200" },
+  { id: 2, name: "City Care Center", location: "London", rating: 4.7, image: "https://via.placeholder.com/200" },
+  { id: 3, name: "Wellness Clinic", location: "Heywood", rating: 4.3, image: "https://via.placeholder.com/200" },
+  { id: 4, name: "Family Health Clinic", location: "Heywood", rating: 4.6, image: "https://via.placeholder.com/200" },
 ];
 
 function HomePage() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [clinicName, setClinicName] = useState('');
+  const [location, setLocation] = useState('');
   const [filteredClinics, setFilteredClinics] = useState(clinicsData);
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    navigate('/search-results'); // מעבר לעמוד תוצאות החיפוש
+    const filtered = clinicsData.filter((clinic) =>
+      clinic.name.toLowerCase().includes(clinicName.toLowerCase()) &&
+      clinic.location.toLowerCase().includes(location.toLowerCase())
+    );
+    setFilteredClinics(filtered);
+
+    // ניתן להוסיף ניווט אם נדרש
+    // navigate('/search-results');
   };
 
   return (
@@ -27,9 +35,16 @@ function HomePage() {
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search by clinic name or location..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search by clinic name..."
+            value={clinicName}
+            onChange={(e) => setClinicName(e.target.value)}
+            className="search-bar"
+          />
+          <input
+            type="text"
+            placeholder="Search by location..."
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
             className="search-bar"
           />
           <button onClick={handleSearch} className="search-button">Search</button>

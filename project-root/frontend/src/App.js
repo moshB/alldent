@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import HomePageNew from './pages/HomePageNew';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import SearchResultsPage from './pages/SearchResultsPage'; // הייבוא החסר
@@ -13,6 +14,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/search-results" element={<SearchResultsPage />} />
+        <Route path="/hpn" element={<HomePageNew />} />
       </Routes>
     </Router>
   );
