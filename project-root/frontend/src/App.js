@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePageNew from './pages/HomePageN';
 import HomePage from './pages/HomePage';
-import HomePageNew from './pages/HomePageNew';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import SearchResultsPage from './pages/SearchResultsPage'; // הייבוא החסר
